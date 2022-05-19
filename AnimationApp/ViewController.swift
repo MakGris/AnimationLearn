@@ -5,12 +5,13 @@
 //  Created by Maksim Grischenko on 19.05.2022.
 //
 
-import UIKit
+import Spring
 
 class ViewController: UIViewController {
 
     @IBOutlet var coreAnimationView: UIView!
     
+    @IBOutlet var springAnimationView: SpringView!
     private var animationStarted = false
     
     override func viewDidLoad() {
@@ -36,6 +37,15 @@ class ViewController: UIViewController {
             }
 
         
+    }
+    @IBAction func runSpringAnimation(_ sender: SpringButton) {
+        springAnimationView.animation = "morph"
+        springAnimationView.curve = "easeIn"
+//        springAnimationView.force = 2
+        springAnimationView.duration = 1
+        springAnimationView.animate()
+        sender.animation = "wobble"
+        sender.animate()
     }
 }
 
